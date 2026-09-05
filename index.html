@@ -1,103 +1,1157 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bondhu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bondhu</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #222;
-    }
+body{
+  background:#f0f2f5;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  color:#1c1e21;
+}
 
-    header {
-      background: #2196f3;
-      color: white;
-      padding: 18px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#1877f2;
+  color:white;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 15px;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
 
-    .container {
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    }
+.header-buttons{
+  display:flex;
+  gap:8px;
+}
 
-    h2 {
-      margin-top: 0;
-    }
+.header-btn{
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:white;
+  cursor:pointer;
+  font-size:19px;
+}
 
-    button {
-      border: none;
-      background: #2196f3;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.container{
+  width:100%;
+  max-width:650px;
+  margin:auto;
+  padding:12px;
+}
 
-    button:active {
-      transform: scale(0.97);
-    }
+.card{
+  background:white;
+  border-radius:12px;
+  margin-bottom:12px;
+  padding:14px;
+  box-shadow:0 1px 4px rgba(0,0,0,.12);
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      margin: 10px 0;
-      font-size: 16px;
-    }
+.profile-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
 
-    #message {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-  </style>
+.avatar{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#1877f2;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  flex-shrink:0;
+}
+
+.profile-name{
+  font-weight:bold;
+  font-size:16px;
+}
+
+.post-time{
+  color:#65676b;
+  font-size:12px;
+  margin-top:3px;
+}
+
+textarea{
+  width:100%;
+  height:80px;
+  resize:none;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:12px;
+  font-size:16px;
+  outline:none;
+}
+
+textarea:focus{
+  border-color:#1877f2;
+}
+
+.post-options{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+
+.option{
+  flex:1;
+  background:#f0f2f5;
+  border:0;
+  border-radius:8px;
+  padding:11px 5px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.option:hover{
+  background:#e4e6eb;
+}
+
+input[type=file]{
+  display:none;
+}
+
+.selected-file{
+  margin-top:10px;
+  padding:8px;
+  background:#e7f3ff;
+  border-radius:8px;
+  display:none;
+  font-size:14px;
+}
+
+.post-button{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  border-radius:8px;
+  padding:12px;
+  background:#1877f2;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.post-button:active{
+  transform:scale(.98);
+}
+
+.post-text{
+  font-size:16px;
+  line-height:1.5;
+  margin-bottom:10px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.media{
+  width:100%;
+  max-height:520px;
+  display:block;
+  object-fit:contain;
+  background:#000;
+  border-radius:9px;
+  margin-top:8px;
+}
+
+video.media{
+  max-height:450px;
+}
+
+.stats{
+  display:flex;
+  justify-content:space-between;
+  color:#65676b;
+  font-size:13px;
+  padding:9px 2px;
+}
+
+.actions{
+  display:flex;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+}
+
+.action{
+  flex:1;
+  border:0;
+  background:white;
+  padding:11px 4px;
+  font-size:15px;
+  cursor:pointer;
+  color:#444;
+}
+
+.action:hover{
+  background:#f0f2f5;
+}
+
+.action.liked{
+  color:#1877f2;
+  font-weight:bold;
+}
+
+.comment-box{
+  display:flex;
+  gap:7px;
+  margin-top:10px;
+}
+
+.comment-input{
+  flex:1;
+  border:1px solid #ddd;
+  border-radius:20px;
+  padding:10px 14px;
+  outline:none;
+  font-size:14px;
+}
+
+.comment-button{
+  border:0;
+  background:#1877f2;
+  color:white;
+  border-radius:20px;
+  padding:0 15px;
+  cursor:pointer;
+}
+
+.comments{
+  margin-top:8px;
+}
+
+.comment{
+  background:#f0f2f5;
+  border-radius:14px;
+  padding:8px 12px;
+  margin-top:5px;
+  font-size:14px;
+}
+
+.empty{
+  text-align:center;
+  color:#65676b;
+  padding:30px 10px;
+}
+
+.welcome{
+  text-align:center;
+}
+
+.welcome h2{
+  margin-bottom:5px;
+}
+
+.preview{
+  margin-top:10px;
+}
+
+.clear-button{
+  background:#e41e3f;
+  color:white;
+  border:0;
+  border-radius:7px;
+  padding:8px 12px;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:55px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  z-index:90;
+}
+
+.bottom-nav button{
+  flex:1;
+  max-width:160px;
+  border:0;
+  background:white;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.bottom-space{
+  height:60px;
+}
+
+@media(max-width:450px){
+  .container{
+    padding:8px;
+  }
+
+  .option{
+    font-size:13px;
+  }
+
+  .action{
+    font-size:14px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    🤝 Bondhu
-  </header>
+<header class="header">
+  <div class="logo">🤝 Bondhu</div>
 
-  <div class="container">
+  <div class="header-buttons">
+    <button class="header-btn" onclick="scrollToPost()">➕</button>
+    <button class="header-btn" onclick="alert('Bondhu Notifications 🔔')">🔔</button>
+  </div>
+</header>
 
-    <div class="card">
-      <h2>স্বাগতম বন্ধু ❤️</h2>
-      <p>এটি আমাদের Bondhu অ্যাপের শুরু।</p>
+
+<main class="container">
+
+  <div class="card welcome">
+    <h2>স্বাগতম বন্ধু ❤️</h2>
+    <p>আপনার বন্ধুদের সাথে ছবি, ভিডিও ও পোস্ট শেয়ার করুন।</p>
+  </div>
+
+
+  <!-- CREATE POST -->
+
+  <div class="card" id="createPost">
+
+    <div class="profile-row">
+
+      <div class="avatar">👤</div>
+
+      <div>
+        <div class="profile-name" id="currentName">
+          আপনি
+        </div>
+
+        <div class="post-time">
+          Public 🌎
+        </div>
+      </div>
+
     </div>
 
-    <div class="card">
-      <h2>নাম লিখুন</h2>
 
-      <input
-        type="text"
-        id="name"
-        placeholder="আপনার নাম লিখুন"
+    <input
+      type="text"
+      id="nameInput"
+      placeholder="আপনার নাম লিখুন"
+      style="width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin-bottom:10px;font-size:15px;"
+    >
+
+
+    <textarea
+      id="postText"
+      placeholder="কি ভাবছেন?"
+    ></textarea>
+
+
+    <div class="post-options">
+
+      <label class="option">
+        🖼️ ছবি
+        <input
+          type="file"
+          id="imageInput"
+          accept="image/*"
+        >
+      </label>
+
+
+      <label class="option">
+        🎥 ভিডিও
+        <input
+          type="file"
+          id="videoInput"
+          accept="video/*"
+        >
+      </label>
+
+    </div>
+
+
+    <div
+      id="selectedFile"
+      class="selected-file"
+    ></div>
+
+
+    <div
+      id="preview"
+      class="preview"
+    ></div>
+
+
+    <button
+      class="post-button"
+      onclick="createPost()"
+    >
+      পোস্ট করুন
+    </button>
+
+  </div>
+
+
+  <!-- FEED -->
+
+  <div id="feed"></div>
+
+  <div class="bottom-space"></div>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    🏠
+  </button>
+
+  <button onclick="scrollToPost()">
+    ➕
+  </button>
+
+  <button onclick="alert('বন্ধুদের ফিচার শীঘ্রই আসছে ❤️')">
+    👥
+  </button>
+
+  <button onclick="alert('আপনার প্রোফাইল')">
+    👤
+  </button>
+
+</nav>
+
+
+<script>
+
+let selectedFile = null;
+let selectedType = "";
+
+const imageInput =
+document.getElementById("imageInput");
+
+const videoInput =
+document.getElementById("videoInput");
+
+const selectedFileBox =
+document.getElementById("selectedFile");
+
+const preview =
+document.getElementById("preview");
+
+
+imageInput.addEventListener("change",function(){
+
+  if(this.files.length === 0) return;
+
+  selectedFile = this.files[0];
+  selectedType = "image";
+
+  videoInput.value = "";
+
+  showSelectedFile();
+
+});
+
+
+videoInput.addEventListener("change",function(){
+
+  if(this.files.length === 0) return;
+
+  selectedFile = this.files[0];
+  selectedType = "video";
+
+  imageInput.value = "";
+
+  showSelectedFile();
+
+});
+
+
+function showSelectedFile(){
+
+  selectedFileBox.style.display = "block";
+
+  selectedFileBox.innerHTML =
+    "📎 নির্বাচিত: " +
+    escapeHTML(selectedFile.name);
+
+  preview.innerHTML = "";
+
+  const url =
+    URL.createObjectURL(selectedFile);
+
+  if(selectedType === "image"){
+
+    const img =
+      document.createElement("img");
+
+    img.src = url;
+    img.className = "media";
+
+    preview.appendChild(img);
+
+  }else{
+
+    const video =
+      document.createElement("video");
+
+    video.src = url;
+    video.className = "media";
+    video.controls = true;
+
+    preview.appendChild(video);
+
+  }
+
+}
+
+
+function createPost(){
+
+  const text =
+    document.getElementById("postText")
+    .value.trim();
+
+  let name =
+    document.getElementById("nameInput")
+    .value.trim();
+
+  if(!name){
+    name = "আপনি";
+  }
+
+  if(!text && !selectedFile){
+
+    alert(
+      "কিছু লিখুন অথবা ছবি/ভিডিও নির্বাচন করুন!"
+    );
+
+    return;
+  }
+
+
+  const post = {
+
+    id: Date.now(),
+
+    name:name,
+
+    text:text,
+
+    time:"এইমাত্র",
+
+    likes:0,
+
+    liked:false,
+
+    comments:[]
+
+  };
+
+
+  if(selectedFile){
+
+    const reader =
+      new FileReader();
+
+    reader.onload = function(e){
+
+      post.media =
+        e.target.result;
+
+      post.mediaType =
+        selectedType;
+
+      savePost(post);
+
+      displayPost(post);
+
+      resetPost();
+
+    };
+
+    reader.readAsDataURL(selectedFile);
+
+  }else{
+
+    savePost(post);
+
+    displayPost(post);
+
+    resetPost();
+
+  }
+
+}
+
+
+function savePost(post){
+
+  try{
+
+    let posts =
+      JSON.parse(
+        localStorage.getItem("bondhuPosts")
+      ) || [];
+
+    posts.unshift(post);
+
+    /*
+      খুব বড় ভিডিও হলে ব্রাউজারের
+      LocalStorage সীমা পূর্ণ হতে পারে।
+    */
+
+    localStorage.setItem(
+      "bondhuPosts",
+      JSON.stringify(posts)
+    );
+
+  }catch(error){
+
+    alert(
+      "ফাইলটি অনেক বড়। ছোট ছবি/ভিডিও দিয়ে আবার চেষ্টা করুন।"
+    );
+
+  }
+
+}
+
+
+function loadPosts(){
+
+  const feed =
+    document.getElementById("feed");
+
+  feed.innerHTML = "";
+
+  let posts =
+    JSON.parse(
+      localStorage.getItem("bondhuPosts")
+    ) || [];
+
+
+  if(posts.length === 0){
+
+    feed.innerHTML = `
+      <div class="card empty">
+        এখনো কোনো পোস্ট নেই ❤️<br>
+        প্রথম পোস্টটি আপনি করুন!
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  posts.forEach(function(post){
+
+    displayPost(post,false);
+
+  });
+
+}
+
+
+function displayPost(post,top=true){
+
+  const feed =
+    document.getElementById("feed");
+
+
+  const card =
+    document.createElement("div");
+
+  card.className = "card";
+
+  card.dataset.id = post.id;
+
+
+  let mediaHTML = "";
+
+
+  if(post.media){
+
+    if(post.mediaType === "image"){
+
+      mediaHTML =
+        `<img
+          class="media"
+          src="${post.media}"
+        >`;
+
+    }
+
+    if(post.mediaType === "video"){
+
+      mediaHTML =
+        `<video
+          class="media"
+          controls
+          playsinline
+          src="${post.media}"
+        ></video>`;
+
+    }
+
+  }
+
+
+  let commentsHTML = "";
+
+
+  if(post.comments){
+
+    post.comments.forEach(function(comment){
+
+      commentsHTML +=
+        `<div class="comment">
+          <b>${escapeHTML(comment.name)}:</b>
+          ${escapeHTML(comment.text)}
+        </div>`;
+
+    });
+
+  }
+
+
+  card.innerHTML = `
+
+    <div class="profile-row">
+
+      <div class="avatar">
+        👤
+      </div>
+
+      <div>
+
+        <div class="profile-name">
+          ${escapeHTML(post.name)}
+        </div>
+
+        <div class="post-time">
+          ${post.time} · 🌎
+        </div>
+
+      </div>
+
+    </div>
+
+
+    ${
+      post.text
+      ?
+      `<div class="post-text">
+        ${escapeHTML(post.text)}
+      </div>`
+      :
+      ""
+    }
+
+
+    ${mediaHTML}
+
+
+    <div class="stats">
+
+      <span>
+        ❤️ ${post.likes || 0}
+      </span>
+
+      <span>
+        ${
+          post.comments
+          ?
+          post.comments.length
+          :
+          0
+        }
+        কমেন্ট
+      </span>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="action ${post.liked ? "liked" : ""}"
+        onclick="likePost(${post.id},this)"
       >
-
-      <button onclick="showMessage()">
-        শুরু করুন
+        ${post.liked ? "❤️ Liked" : "👍 Like"}
       </button>
 
-      <div id="message"></div>
+
+      <button
+        class="action"
+        onclick="focusComment(${post.id})"
+      >
+        💬 Comment
+      </button>
+
+
+      <button
+        class="action"
+        onclick="sharePost(${post.id})"
+      >
+        ↗️ Share
+      </button>
+
+    </div>
+
+
+    <div class="comment-box">
+
+      <input
+        class="comment-input"
+        id="comment-${post.id}"
+        placeholder="কমেন্ট লিখুন..."
+      >
+
+      <button
+        class="comment-button"
+        onclick="addComment(${post.id})"
+      >
+        পাঠান
+      </button>
+
+    </div>
+
+
+    <div
+      class="comments"
+      id="comments-${post.id}"
+    >
+      ${commentsHTML}
+    </div>
+
+  `;
+
+
+  if(top){
+
+    feed.prepend(card);
+
+  }else{
+
+    feed.appendChild(card);
+
+  }
+
+}
+
+
+function likePost(id,button){
+
+  let posts =
+    getPosts();
+
+  const post =
+    posts.find(p => p.id === id);
+
+  if(!post) return;
+
+
+  post.liked =
+    !post.liked;
+
+
+  if(post.liked){
+
+    post.likes =
+      (post.likes || 0) + 1;
+
+  }else{
+
+    post.likes =
+      Math.max(
+        0,
+        (post.likes || 0) - 1
+      );
+
+  }
+
+
+  localStorage.setItem(
+    "bondhuPosts",
+    JSON.stringify(posts)
+  );
+
+
+  const card =
+    document.querySelector(
+      `[data-id="${id}"]`
+    );
+
+  if(card){
+
+    const stats =
+      card.querySelector(".stats");
+
+    stats.innerHTML = `
+      <span>❤️ ${post.likes}</span>
+      <span>${post.comments.length} কমেন্ট</span>
+    `;
+
+    button.className =
+      "action " +
+      (post.liked ? "liked" : "");
+
+    button.innerHTML =
+      post.liked
+      ? "❤️ Liked"
+      : "👍 Like";
+
+  }
+
+}
+
+
+function addComment(id){
+
+  const input =
+    document.getElementById(
+      "comment-" + id
+    );
+
+  const text =
+    input.value.trim();
+
+  if(!text) return;
+
+
+  let posts =
+    getPosts();
+
+  const post =
+    posts.find(p => p.id === id);
+
+  if(!post) return;
+
+
+  if(!post.comments){
+
+    post.comments = [];
+
+  }
+
+
+  post.comments.push({
+
+    name:"আপনি",
+
+    text:text
+
+  });
+
+
+  localStorage.setItem(
+    "bondhuPosts",
+    JSON.stringify(posts)
+  );
+
+
+  const comments =
+    document.getElementById(
+      "comments-" + id
+    );
+
+
+  const div =
+    document.createElement("div");
+
+  div.className = "comment";
+
+  div.innerHTML =
+    "<b>আপনি:</b> " +
+    escapeHTML(text);
+
+
+  comments.appendChild(div);
+
+
+  input.value = "";
+
+
+  const card =
+    document.querySelector(
+      `[data-id="${id}"]`
+    );
+
+
+  if(card){
+
+    const stats =
+      card.querySelector(".stats");
+
+    stats.innerHTML = `
+      <span>❤️ ${post.likes}</span>
+      <span>${post.comments.length} কমেন্ট</span>
+    `;
+
+  }
+
+}
+
+
+function focusComment(id){
+
+  const input =
+    document.getElementById(
+      "comment-" + id
+    );
+
+  if(input){
+
+    input.focus();
+
+  }
+
+}
+
+
+function sharePost(id){
+
+  const url =
+    window.location.href;
+
+  if(navigator.share){
+
+    navigator.share({
+
+      title:"Bondhu",
+
+      text:"Bondhu-তে এই পোস্টটি দেখুন ❤️",
+
+      url:url
+
+    });
+
+  }else{
+
+    navigator.clipboard
+      .writeText(url)
+      .then(function(){
+
+        alert(
+          "Bondhu-এর লিংক কপি হয়েছে ❤️"
+        );
+
+      });
+
+  }
+
+}
+
+
+function getPosts(){
+
+  return JSON.parse(
+    localStorage.getItem("bondhuPosts")
+  ) || [];
+
+}
+
+
+function resetPost(){
+
+  document.getElementById("postText")
+    .value = "";
+
+  document.getElementById("nameInput")
+    .value = "";
+
+  imageInput.value = "";
+
+  videoInput.value = "";
+
+  selectedFile = null;
+
+  selectedType = "";
+
+  selectedFileBox.style.display =
+    "none";
+
+  selectedFileBox.innerHTML = "";
+
+  preview.innerHTML = "";
+
+}
+
+
+function scrollToPost(){
+
+  document.getElementById("createPost")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function escapeHTML(text){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    text;
+
+  return div.innerHTML;
+
+}
+
+
+document.getElementById("nameInput")
+.addEventListener("input",function(){
+
+  const name =
+    this.value.trim();
+
+  document.getElementById("currentName")
+    .textContent =
+    name || "আপনি";
+
+});
+
+
+loadPosts();
+
+</script>
+
+</body>
+</html>
