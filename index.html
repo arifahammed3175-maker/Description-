@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bondhu</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #2196f3;
+      color: white;
+      padding: 18px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    button {
+      border: none;
+      background: #2196f3;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    🤝 Bondhu
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>স্বাগতম বন্ধু ❤️</h2>
+      <p>এটি আমাদের Bondhu অ্যাপের শুরু।</p>
+    </div>
+
+    <div class="card">
+      <h2>নাম লিখুন</h2>
+
+      <input
+        type="text"
+        id="name"
+        placeholder="আপনার নাম লিখুন"
+      >
+
+      <button onclick="showMessage()">
+        শুরু করুন
+      </button>
+
+      <div id="message"></div>
